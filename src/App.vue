@@ -7,7 +7,7 @@
 
 <script>
 import ChangeChairsTouchDevice from './components/ChangeChairsTouchDeviceComp.vue';
-import ChangeChairsPC from './components/ChangeChairsPCComp.vue'
+import ChangeChairsPC from './components/ChangeChairsPCComp.vue';
 
 export default {
   name: 'App',
@@ -17,10 +17,13 @@ export default {
   },
   data() {
     return {
-      isTouchDevice: '',
+      isTouchDevice: false
     }
   },
-  mounted() {
+  //タッチデバイスかどうかを判定し、trueならタッチデバイス対応のコンポーネントを読み込む
+  //falseの場合はPC用のコンポーネントを読み込む
+  //beforecreateでは反応しないのでcreatedで設定した
+  created() {
     let touch_event = window.ontouchstart;
     let touch_points = navigator.maxTouchPoints;
     console.log(touch_event)
